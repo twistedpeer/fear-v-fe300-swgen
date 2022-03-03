@@ -11,10 +11,10 @@
 all: riscv-tests riscv-arch-tests riscv-torture csmith
 
 riscv-tests:
-	make -C ./riscv-tests
+	+make -C ./riscv-tests
 
 riscv-arch-tests:
-	make -C ./riscv-arch-tests run
+	+make -C ./riscv-arch-tests
 
 riscv-torture:
 	make -C ./riscv-torture

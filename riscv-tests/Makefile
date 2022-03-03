@@ -1,6 +1,6 @@
 include ../common.mk
 
-BIN_DIR := $(BIN_DIR)/riscv-tests
+OUT_DIR := $(ROOT_DIR)/bin/riscv-tests
 SRC_DIR := $(abspath ./isa)
 
 ENV_DIR := $(ROOT_DIR)/include/env
@@ -31,13 +31,14 @@ vpath %.S $(SRC_DIR)
 # Build assembly tests
 
 %.dump: %
-	$(RISCV_OBJDUMP) "$(BIN_DIR)/$<.elf" > "$(BIN_DIR)/$@"
+	$(RISCV_OBJDUMP) "$(OUT_DIR)/$<.elf" > "$(OUT_DIR)/$@"
 
 define compile_template
 
 $$($(1)_p_tests): $(1)-p-%: $(1)/%.S
-	mkdir -p $(BIN_DIR)
-	$$(RISCV_GCC) $(2) $$(RISCV_GCC_OPTS) $$(INCLUDES) "$$<" "$(ENV_DIR)/qemu.c" -o "$$(BIN_DIR)/$$@.elf"
+	mkdir -p $$(OUT_DIR)
+	$$(RISCV_GCC) $(2) $$(RISCV_GCC_OPTS) $$(INCLUDES) "$$<" "$(ENV_DIR)/qemu.c" -o "$$(OUT_DIR)/$$@.elf"
+	cp "$$<" "$$(OUT_DIR)/$$@.S"
 $(1)_tests += $$($(1)_p_tests)
 
 $(1)_tests_dump = $$(addsuffix .dump, $$($(1)_tests))
@@ -67,4 +68,4 @@ all: $(tests_dump)
 # Clean up
 
 clean:
-	rm -rf $(BIN_DIR)/
+	rm -rf $(OUT_DIR)/
