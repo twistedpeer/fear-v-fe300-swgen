@@ -5,4 +5,4 @@ This repository wraps riscv-tests, riscv-arch-tests, csmith and riscv-torture fo
 * riscv-tests (static test suite, done)
 * riscv-arch-tests (static test suite, done)
 * riscv-torture (sw generator, done)
-* csmith (sw generator, planned)
+* csmith (sw generator, done)
