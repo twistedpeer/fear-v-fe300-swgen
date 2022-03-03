@@ -5,7 +5,7 @@ ifeq ($(shell command -v $(TARGET_SIM) 2> /dev/null),)
 endif
 
 RUN_TARGET=\
-    $(TARGET_SIM) -M sifive_e -device terminator,address=0x80000004 -nographic -kernel "$<" > "$(*).signature.output";
+    $(TARGET_SIM) -M sifive_e -device terminator,address=0x80000000 -nographic -kernel "$<" > "$(*).signature.output";
 
 
 RISCV_PREFIX   ?= riscv64-unknown-elf-
