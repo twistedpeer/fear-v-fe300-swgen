@@ -9,9 +9,6 @@ SRC_DIR := $(SRC_DIR)/csmith
 
 CSMITHFLAGS := --main --no-argc --no-float --no-math64 --no-longlong
 
-# TO DO: Properly set terminator address!!!
-QEMU_TERMINATOR := -device terminator,address=0x80000000
-
 CFLAGS_EXTRA := -march=rv32imac -mabi=ilp32 -mcmodel=medlow \
 	-I$(ROOT_DIR)/csmith/include \
 	-I$(ROOT_DIR)/include/crt \
