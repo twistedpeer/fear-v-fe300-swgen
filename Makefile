@@ -20,7 +20,7 @@ riscv-torture:
 	make -C ./riscv-torture
 
 csmith:
-	make -C ./csmith csmith
+	make -C ./csmith csmith || make csmith
 
 clean:
 	make -C ./riscv-tests clean
