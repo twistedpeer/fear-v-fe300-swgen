@@ -2,3 +2,6 @@
 	path = tools/riscv-torture
 	url = git@github.com:twistedpeer/fear5-torture.git
 	branch = fear5
+[submodule "tools/csmith"]
+	path = tools/csmith
+	url = git@github.com:csmith-project/csmith.git
