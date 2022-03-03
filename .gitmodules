@@ -1,0 +1,3 @@
+[submodule "tools/riscv-torture"]
+	path = tools/riscv-torture
+	url = git@github.com:twistedpeer/fear5-torture.git

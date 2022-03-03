@@ -6,9 +6,9 @@
 # - riscv-torture    (generator, planned)
 # - csmith           (generator, planned)
 
-.PHONY: all riscv-tests riscv-arch-tests
+.PHONY: all riscv-tests riscv-arch-tests riscv-torture
 
-all: riscv-tests riscv-arch-tests
+all: riscv-tests riscv-arch-tests riscv-torture
 
 riscv-tests:
 	make -C ./riscv-tests
@@ -16,6 +16,10 @@ riscv-tests:
 riscv-arch-tests:
 	make -C ./riscv-arch-tests run
 
+riscv-torture:
+	make -C ./riscv-torture
+
 clean:
 	make -C ./riscv-tests clean
 	make -C ./riscv-arch-tests clean
+	make -C ./riscv-torture clean
