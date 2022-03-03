@@ -1,0 +1,23 @@
+TARGET_SIM   ?= qemu-system-riscv32
+TARGET_FLAGS ?= $(RISCV_TARGET_FLAGS)
+ifeq ($(shell command -v $(TARGET_SIM) 2> /dev/null),)
+    $(error Target simulator executable '$(TARGET_SIM)` not found)
+endif
+
+RUN_TARGET=\
+    $(TARGET_SIM) -M sifive_e -device terminator,address=0x80000004 -nographic -kernel "$<" > "$(*).signature.output";
+
+
+RISCV_PREFIX   ?= riscv64-unknown-elf-
+RISCV_GCC      ?= $(RISCV_PREFIX)gcc
+RISCV_OBJDUMP  ?= $(RISCV_PREFIX)objdump
+RISCV_GCC_OPTS ?= -static -g -mcmodel=medany -nostartfiles -nostdlib
+
+COMPILE_TARGET=\
+	$$(RISCV_GCC) $(1) $$(RISCV_GCC_OPTS) \
+		$$(INCLUDES) \
+		$$(LDFLAGS) \
+		"$$(<)" \
+		"$(ENV_DIR)/qemu.c" \
+		-o "$$@"; \
+	$$(RISCV_OBJDUMP) -D "$$@" > "$$@.objdump"
