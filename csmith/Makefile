@@ -2,6 +2,10 @@ ifndef PROGRAM
 $(error PROGRAM is not defined!)
 endif
 
+ifndef CSMITHFLAGS
+$(error CSMITHFLAGS is not defined!)
+endif
+
 include ../common.mk
 
 CSMITH := $(ROOT_DIR)/tools/csmith/build/bin/csmith
@@ -11,7 +15,7 @@ endif
 
 OUT_DIR := $(ROOT_DIR)/bin/csmith
 
-CSMITHFLAGS := --main --no-argc --no-float --no-math64 --no-longlong
+# CSMITHFLAGS := --main --no-argc --no-float --no-math64 --no-longlong
 
 CFLAGS_EXTRA := -march=rv32imac -mabi=ilp32 -mcmodel=medlow \
 	-I$(ROOT_DIR)/csmith/include \
