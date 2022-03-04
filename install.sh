@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Init Git submodules
+git submodule update --init
+
 # Build CSmith
 mkdir -p tools/csmith/build
 cd tools/csmith
