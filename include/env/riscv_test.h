@@ -171,6 +171,12 @@ _start:                                                                 \
 trap_vector:                                                            \
         /* test whether the test came from pass/fail */                 \
         csrr t5, mcause;                                                \
+        /* FEAR5: Just stop here and report the exception... */         \
+        la t6, 0x80000000;                                              \
+        li t3, 0x10000000;                                              \
+        add t3, t3, t5;                                                 \
+        sw t3, 0(t6);                                                   \
+        /* END FEAR5 */                                                 \
         li t6, CAUSE_USER_ECALL;                                        \
         beq t5, t6, write_tohost;                                       \
         li t6, CAUSE_SUPERVISOR_ECALL;                                  \
