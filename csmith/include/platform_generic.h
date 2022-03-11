@@ -38,15 +38,28 @@ extern int printf (const char *, ...);
 extern void qemu_exit_normal(void);
 #else
 #include <stdio.h>
+#include <metal/cpu.h>
 #endif
 
 // This is memory-mapped to the beginning of RAM (0x80000000)
 int terminator __attribute__((section(".terminator")));
 
+void my_exception_handler(struct metal_cpu *cpu, int ecode) {
+   terminator = (ecode | 0x10000000);
+}
+
 static void
 platform_main_begin(void)
 {
-	/* Nothing to do. */
+	struct metal_cpu *cpu0 = metal_cpu_get(0);
+	struct metal_interrupt *cpu_int = metal_cpu_interrupt_controller(cpu0);
+	metal_interrupt_init(cpu_int);
+
+	// metal_cpu_exception_register(cpu0, 2, my_exception_handler);
+
+	for (int i = 0; i < 16; i++) {
+		metal_cpu_exception_register(cpu0, i, my_exception_handler);
+	}
 }
 
 static void
