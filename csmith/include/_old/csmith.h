@@ -43,7 +43,6 @@
 
 #define __STDC_LIMIT_MACROS
 #include "random_inc.h"
-// #include "safe_math.h"
 
 static uint32_t crc32_tab[256];
 static uint32_t crc32_context = 0xFFFFFFFFUL;
@@ -90,7 +89,7 @@ transparent_crc (uint32_t val, char* vname, int flag)
 {
 	crc32_8bytes(val);
 	if (flag) {
-  		//printf("...checksum after hashing %s : %X\n", vname, crc32_context ^ 0xFFFFFFFFU);
+  		printf("...checksum after hashing %s : %X\n", vname, crc32_context ^ 0xFFFFFFFFU);
 	}
 }
 #else
@@ -111,9 +110,9 @@ static void
 transparent_crc (uint64_t val, char* vname, int flag)
 {
 	crc32_8bytes(val);
-	// if (flag) {
- //  		printf("...checksum after hashing %s : %lX\n", vname, crc32_context ^ 0xFFFFFFFFUL);
-	// }
+	if (flag) {
+  		printf("...checksum after hashing %s : %lX\n", vname, crc32_context ^ 0xFFFFFFFFUL);
+	}
 }
 
 #endif
@@ -125,9 +124,9 @@ transparent_crc_bytes (char *ptr, int nbytes, char* vname, int flag)
     for (i=0; i<nbytes; i++) {
         crc32_byte(ptr[i]);
     }
-	// if (flag) {
- //  		printf("...checksum after hashing %s : %lX\n", vname, crc32_context ^ 0xFFFFFFFFUL);
-	// }
+	if (flag) {
+  		printf("...checksum after hashing %s : %lX\n", vname, crc32_context ^ 0xFFFFFFFFUL);
+	}
 }
 
 static void
