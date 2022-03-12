@@ -4,8 +4,8 @@
 git submodule update --init
 
 # Build CSmith
-mkdir -p tools/csmith/build
+mkdir -p work/csmith
 cd tools/csmith
-cmake -DCMAKE_INSTALL_PREFIX=./build .
+cmake -DCMAKE_INSTALL_PREFIX=../../work/csmith .
 make -j8 && make install -j8
 cd ../..

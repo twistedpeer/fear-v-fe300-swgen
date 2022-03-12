@@ -8,7 +8,7 @@ endif
 
 include ../common.mk
 
-CSMITH := $(ROOT_DIR)/tools/csmith/build/bin/csmith
+CSMITH := $(ROOT_DIR)/work/csmith/bin/csmith
 ifeq ($(shell command -v $(CSMITH) 2> /dev/null),)
     $(error CSsmith executable $(CSMITH) not found)
 endif
