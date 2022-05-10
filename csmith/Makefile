@@ -32,7 +32,7 @@ csmith:
 	mkdir -p $(OUT_DIR)
 	$(CSMITH) -o "$(OUT_DIR)/$(PROGRAM).c" $(CSMITHFLAGS)
 	riscv64-unknown-elf-gcc $(CFLAGS_EXTRA)
-	timeout --foreground 3s $(call qemu,$(OUT_DIR)/$(PROGRAM).elf) > "$(OUT_DIR)/$(PROGRAM).signature"
+	timeout --foreground 3s $(call qemu,$(OUT_DIR)/$(PROGRAM).elf) -d in_asm,goldenrun -D "$(OUT_DIR)/$(PROGRAM).lst" > "$(OUT_DIR)/$(PROGRAM).signature"
 
 clean:
 	rm -rf $(OUT_DIR)/

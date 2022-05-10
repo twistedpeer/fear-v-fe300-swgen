@@ -29,7 +29,7 @@ riscv-torture:
 	mv "$(TORTURE_DIR)/output/$(PROGRAM).S" "$(OUT_DIR)"
 	mv "$(TORTURE_DIR)/output/$(PROGRAM).stats" "$(OUT_DIR)"
 	riscv64-unknown-elf-gcc $(CFLAGS_EXTRA) $(LDFLAGS) -o "$(OUT_DIR)/$(PROGRAM).elf" "$(OUT_DIR)/$(PROGRAM).S" "$(ENV_DIR)/qemu.c"
-	$(call qemu,$(OUT_DIR)/$(PROGRAM).elf) > "$(OUT_DIR)/$(PROGRAM).signature"
+	$(call qemu,$(OUT_DIR)/$(PROGRAM).elf) -d in_asm,goldenrun -D "$(OUT_DIR)/$(PROGRAM).lst" > "$(OUT_DIR)/$(PROGRAM).signature"
 
 clean:
 	rm -rf $(OUT_DIR)/
