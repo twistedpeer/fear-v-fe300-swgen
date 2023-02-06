@@ -5,11 +5,11 @@ SECTIONS
 {
   . = 0x20400000;
   .text.init : { *(.text.init) }
-  . = 0x80000000;
-  /* . = ALIGN(0x1000); */
-  .tohost : { *(.tohost) }
   . = ALIGN(0x1000);
   .text : { *(.text) }
+  . = 0x80001000;
+  /* . = ALIGN(0x1000); */
+  /* .tohost : { *(.tohost) } */
   . = ALIGN(0x1000);
   .data : { *(.data) }
   .bss : { *(.bss) }
