@@ -23,7 +23,7 @@ CFLAGS_EXTRA := -march=rv32imac -mabi=ilp32 \
 	-O2 -DCSMITH_MINIMAL -DNO_PRINTF \
 	$(ROOT_DIR)/include/crt/crt0.S \
 	"$(OUT_DIR)/$(PROGRAM).c" \
-	-nostartfiles -nostdlib \
+	-nostartfiles \
 	-L$(ROOT_DIR)/include/crt/ \
 	-T$(ROOT_DIR)/include/crt/link.ld \
 	-o "$(OUT_DIR)/$(PROGRAM).elf"
