@@ -1,7 +1,7 @@
 [submodule "tools/riscv-torture"]
 	path = tools/riscv-torture
-	url = git@github.com:twistedpeer/fear5-torture.git
+	url = https://github.com/twistedpeer/fear5-torture.git
 	branch = fear5
 [submodule "tools/csmith"]
 	path = tools/csmith
-	url = git@github.com:csmith-project/csmith.git
+	url = https://github.com/csmith-project/csmith.git
