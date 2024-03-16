@@ -17,7 +17,7 @@ OUT_DIR := $(ROOT_DIR)/bin/csmith
 
 # CSMITHFLAGS := --main --no-argc --no-float --no-math64 --no-longlong
 
-CFLAGS_EXTRA := -march=rv32imac -mabi=ilp32 \
+CFLAGS_EXTRA := -march=rv32imac_zicsr_zifencei -mabi=ilp32 \
 	-I$(ROOT_DIR)/csmith/include \
 	-I$(ROOT_DIR)/include/crt \
 	-O2 -DCSMITH_MINIMAL -DNO_PRINTF \
